@@ -1,0 +1,8 @@
+version: '3'
+services:
+  wanderlust:
+    build: ./src/
+    volumes:
+      - ./src/:/var/www/html
+    ports:
+      - 80:80

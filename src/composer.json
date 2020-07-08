@@ -1,0 +1,6 @@
+{
+  "require": {
+    "rgamba/tonic": "3.0",
+    "phayes/geophp": "1.2"
+  }
+}
