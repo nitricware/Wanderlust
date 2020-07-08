@@ -1,0 +1,28 @@
+body {
+  font-family: "Verdana", sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.button {
+  padding: 3px;
+  border: 1px solid #cccccc;
+}
+.button.download {
+  font-weight: bold;
+}
+.button.download.geoJSON {
+  background: #91cca3 !important;
+}
+.button.download.GPX {
+  background: #ccaccb !important;
+}
+
+/*# sourceMappingURL=default.css.map */
