@@ -2,8 +2,8 @@
 {loop $wanderweg in $stadtwanderwege}
     <li><a href="{$wanderweg->properties->URL_INFO}">{$wanderweg->properties->BEZ_TEXT}</a>
         (#{$wanderweg->properties->OBJECTID})
-        [<a href="routes/stadtwanderwege/files/{$wanderweg->id}.json">geoJSON</a>]
-        [<a href="routes/stadtwanderwege/files/{$wanderweg->id}.gpx">GPX</a>]
+        [<a class="button download geoJSON" href="routes/stadtwanderwege/files/{$wanderweg->id}.json">geoJSON</a>]
+        [<a class="button download GPX" href="routes/stadtwanderwege/files/{$wanderweg->id}.gpx">GPX</a>]
     </li>
 {endloop}
 </ul>
