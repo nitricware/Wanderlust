@@ -5,10 +5,20 @@
 	
 	
 	class FetchJSON {
-		public JSONLocations $locations;
-		public \geoPHP $geo;
+		/**
+		 * @var JSONLocations
+		 */
+		private JSONLocations $locations;
 		
-		public array $paths = [
+		/**
+		 * @var \geoPHP
+		 */
+		private \geoPHP $geo;
+		
+		/**
+		 * @var array
+		 */
+		private array $paths = [
 			"stadtwanderwege" => [
 				"tmp" => __BASEDIR__."/tmp/stadtwanderwege.json",
 				"routes" => __BASEDIR__."/routes/stadtwanderwege/files/",
@@ -16,6 +26,19 @@
 			]
 		];
 		
+		/**
+		 * @var array
+		 */
+		private array $archives = [
+			__BASEDIR__."/routes/stadtwanderwege/files/stadtwanderwege_gpx.tar",
+			__BASEDIR__."/routes/stadtwanderwege/files/stadtwanderwege_gpx.tar.gz",
+			__BASEDIR__."/routes/stadtwanderwege/files/stadtwanderwege_json.tar",
+			__BASEDIR__."/routes/stadtwanderwege/files/stadtwanderwege_json.tar.gz",
+		];
+		
+		/**
+		 * FetchJSON constructor.
+		 */
 		public function __construct () {
 			$this->locations = new JSONLocations();
 			$this->geo = new \geoPHP();
@@ -23,6 +46,8 @@
 			if (!file_exists($this->paths["stadtwanderwege"]["routes"])) {
 				mkdir($this->paths["stadtwanderwege"]["routes"], 0777, true);
 			}
+			
+			$this->deleteArchives();
 		}
 		
 		/**
@@ -54,8 +79,19 @@
 				}
 			}
 			
-			// TODO: compress
-			// TODO: delete before new archive
+			$jsonArchive->compress(\Phar::GZ);
+			$gpxArchive->compress(\Phar::GZ);
+			
+			unlink($dir."stadtwanderwege_json.tar");
+			unlink($dir."stadtwanderwege_gpx.tar");
+		}
+		
+		private function deleteArchives(): void {
+			foreach ($this->archives as $archive) {
+				if (file_exists($archive)) {
+					unlink($archive);
+				}
+			}
 		}
 		
 		/**
