@@ -1,14 +1,29 @@
 {include html/header.html}
 <h1>Wanderlust</h1>
-<p>Wanderlust ist ein kleines Projekt, das die Wanderwege als einzelne geoJSON und GPX Dateien zur Verfügung
-    stellt. Es nutzt dafür die offenen Daten</p>
+<p>
+    Wanderlust ist ein kleines Projekt, das die Wanderwege als einzelne geoJSON und GPX Dateien zur Verfügung
+    stellt. Es nutzt dafür die offenen Daten
+</p>
 <p>Das Projekt ist auf GitHub verfügbar und freut sich über Pull Requests. Die Seite nutzt PHP.</p>
 <h2>Wanderwege in Wien</h2>
-<p>Die Stadt Wien bietet alle Wanderwege der MA49 als offene Daten in einer Datei an. Dieses Projekt teilt die
+<p>
+    Die Stadt Wien bietet alle Wanderwege der MA49 als offene Daten in einer Datei an. Dieses Projekt teilt die
     Wanderwege in einzelne Dateien auf und stellt sie zuf Verfügung.
-    <em>Es ist geplant in einer zukünftigen Version Wanderwege wie den Rundumadum-Wanderweg zu einer Datei
-        zusammenzufassen - als zusätzliches Angebot.</em></p>
-<p><a href="https://data.wien.gv.at">Datenquelle: Stadt Wien – https://data.wien.gv.at</a></p>
+    <em>
+        Es ist geplant in einer zukünftigen Version Wanderwege wie den Rundumadum-Wanderweg zu einer Datei
+        zusammenzufassen - als zusätzliches Angebot.
+    </em>
+</p>
+<p>
+    <a href="https://data.wien.gv.at">Datenquelle: Stadt Wien – https://data.wien.gv.at</a>
+</p>
+<p>
+    Die Wanderwege können einzeln oder als TAR-Ball (gzip-komprimiert) herunter geladen werden:
+    [<a class="button download geoJSON"
+        href="routes/stadtwanderwege/files/stadtwanderwege_json.tar.gz">GeoJSON</a>]
+    [<a class="button download GPX"
+        href="routes/stadtwanderwege/files/stadtwanderwege_gpx.tar.gz">GPX</a>]
+</p>
 {include html/routesList.html}
 
 {include html/footer.html}

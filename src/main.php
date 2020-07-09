@@ -7,7 +7,7 @@
 	$stadtwanderwegeInfos = scandir(\NitricWare\__BASEDIR__ . "/routes/stadtwanderwege/");
 	
 	foreach ($stadtwanderwegeInfos as $i) {
-		if ($i != ".." && $i != ".") {
+		if (pathinfo($i)["extension"] == "json") {
 			$swa[] = json_decode(file_get_contents(__BASEDIR__ . "/routes/stadtwanderwege/".$i));
 			$templates->assign("stadtwanderwege", $swa);
 		}
