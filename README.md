@@ -23,3 +23,4 @@ This project requires PHP 7.4
 ## Version History
 
 - 1.0 (8.7.2020) - initial release
+- 1.1 (9.7.2020) - added compressed archives
