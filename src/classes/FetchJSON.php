@@ -36,6 +36,29 @@
 		}
 		
 		/**
+		 * @param $type
+		 */
+		private function archive($type) {
+			$dir = $this->paths[$type]["routes"];
+			
+			$jsonArchive = new \PharData($dir."stadtwanderwege_json.tar");
+			$gpxArchive = new \PharData($dir."stadtwanderwege_gpx.tar");
+			
+			foreach (scandir($dir) as $file) {
+				$p = pathinfo($dir.$file)["extension"];
+				
+				if ($p == "json") {
+					$jsonArchive->addFile($dir.$file);
+				} elseif ($p == "gpx") {
+					$gpxArchive->addFile($dir.$file);
+				}
+			}
+			
+			// TODO: compress
+			// TODO: delete before new archive
+		}
+		
+		/**
 		 * @throws WanderlustException
 		 */
 		public function stadtwanderwege(): void {
@@ -62,6 +85,8 @@
 						throw new WanderlustException("Couldn't write route JSON for ".$wanderweg->id);
 					}
 				}
+				
+				$this->archive("stadtwanderwege");
 			} else {
 				throw new WanderlustException("Couldn't write tmp JSON for >>stadtwanderwege<<");
 			}
